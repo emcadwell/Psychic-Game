@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/reset.css">
+    <title>Psychic Game</title>
+</head>
+<body style = "background: url(https://images5.alphacoders.com/507/thumb-1920-507388.jpg); no-repeat center center fixed;">
+
+    <div id="container">
+     <div class="panel">
+         <h1>Psychic Game </h1>
+         <h3>Guess what letter I'm thinking of</h3>
+         <button>NEW GAME</button>
+     </div>
+
+     <div class="panel">
+         <h3>Enter your guess below &amp; press enter</h3>
+         <input type="letter">
+     </div>
+
+    </div>
+
+    <h4>Guess what letter I'm thinking of</h4>
+
+    <div>
+        <p id="directions-text">Press any key within the alphabet to start playing!</p>
+        <p id="userchoice-text"></p>
+        <p id="computerchoice-text"></p>
+        <p id="wins-text"></p>
+        <p id="losses-text"></p>
+        <p id="guesses-text"></p>
+    </div>
+
+    <script type="text/javascript">
+
+
+    var computerChoices = ['a','b','c','d','e','f','g','h','i','j','k','l',
+    'm','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+
+    var wins = 0;
+    var losses = 0;
+    var guesses = 10;
+
+    var directionsText = document.getElementById("directions-text");
+    var userChoiceText = document.getElementById("userchoice-text");
+    var winsText = document.getElementById("wins-text");
+    var lossesText = document.getElementById("losses-text");
+    var guessesText = document.getElementById("guesses-text");
+
+    document.onkeyup = function(event) {
+        var userGuess = event.key;
+        var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+        if ((userGuess === "a") || (userGuess === "b") || (userGuess === "c") || (userGuess === "d") || (userGuess === "e") || (userGuess === "f") || (userGuess === "g") || (userGuess === "h") || (userGuess === "i") || (userGuess === "j") || (userGuess === "k") || (userGuess === "l") || (userGuess === "m") || (userGuess === "n") || (userGuess === "o") || (userGuess === "p") || (userGuess === "q") || (userGuess === "r") || (userGuess === "s") || (userGuess === "t") || (userGuess === "u") || (userGuess === "v") || (userGuess === "w") || (userGuess === "x") || (userGuess === "y") || (userGuess === "z")) {
+            
+            if (computerGuess.indexOf(userGuess) === -1) {
+                guesses--;
+            }
+            if (guesses==0)guesses=10;
+
+            else if (userGuess === computerGuess) wins++;
+
+            else if (guesses==0) {
+                losses++;
+            }
+                
+        }
+
+            directionsText.textContent = "";
+
+            winsText.textContent = "wins: " + wins;
+            lossesText.textContent = "losses: " + losses;
+            guessesText.textContent = "guesses: " + guesses;
+            userChoiceText.textContent = "guesses so far " + userGuess;   
+    }  
+   
+    
+    
+    
+    </script>
+    
+</body>
+</html>
+
+                                                        <!--Was not able to figure out how to count losses-->
+                                                        <!--Was not able to figure out how to reset the letter guesses-->

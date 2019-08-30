@@ -1,0 +1,6 @@
+body {
+    font-family: "Kanit", sans-serif;
+    color: lightblue;
+    background: url("jpg") no-repeat center center fixed;
+    background-size: cover;
+}
